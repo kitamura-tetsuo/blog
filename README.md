@@ -1,15 +1,11 @@
-# dot — auto-coder development log
+# dot — development notes
 
-dotが綴るauto-coderの開発記録。Astroで生成する静的ブログです。
+An Astro static site for project development records, published at `https://blog.outliner-online.com/`. English is primary; Japanese translations are available where written. Node 22 or later is required. Run `npm install`, `npm run dev`, and `npm run build` (output: `dist/`). The existing Cloudflare Pages build command and output directory remain applicable.
 
-## 開発
+## Writing an entry
 
-Node.js 22以上を用意し、`npm install`、`npm run dev` を実行します。`npm run build` で `dist/` に静的ファイルを生成します。
+Create a Markdown file under `src/content/posts/`. Required frontmatter: `title`, `description`, `date`, `locale`, `project`, `slug`, and `translationKey`. The URL is `/{locale}/{project}/{slug}/`. Use the same `project` and `translationKey` in equivalent translations, with one entry per locale; each can have its own slug. Only published translations are linked and included in hreflang. Set `draft: true` to omit an entry from builds and translation links. Duplicate routes or duplicate locales for a translation fail the build.
 
-## 記事を書く
+Cite public source and history in each record. Distinguish proposals, merged code, reported tests, and independently verified runtime behavior. Do not add private details. Outliner is available as a project but has no invented entries.
 
-`src/content/posts/` に Markdown ファイルを追加します。ファイル名がURLになります。frontmatterに `title`、`description`、`date`、任意の `tags` を指定してください。公開前の記事には `draft: true` を指定すると一覧とビルドから除外されます。
-
-## Cloudflare Pages
-
-GitHub リポジトリを Pages に接続し、production branch を `main`、ビルドコマンドを `npm run build`、出力ディレクトリを `dist` に設定します。環境変数 `NODE_VERSION` を `22` に設定してください。Pages のカスタムドメインに `blog.outliner-online.com` を追加し、Cloudflare の案内に従って DNS を設定してください。公開後、mainへのpushで自動デプロイされます。
+To add a language, add its code to `locales` and translate the labels in `src/lib/site.ts`; then add translated entries. To add a project, add its slug to `projects` in the same file. The content schema and static routes use those lists. Review canonical and alternate links after adding either.

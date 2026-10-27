@@ -1,0 +1,10 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { labels, locales, pathFor, projects } from '../../lib/site';
+export function getStaticPaths(){ return locales.map(locale => ({params:{locale}})); }
+const {locale} = Astro.params;
+const posts = (await getCollection('posts', ({data}) => !data.draft && data.locale === locale)).sort((a,b)=>b.data.date.valueOf()-a.data.date.valueOf());
+const alternates = locales.map(l => ({locale:l,path:`/${l}/`}));
+---
+<Base {locale} {alternates}><main id="main"><section class="hero"><p class="eyebrow">Notes from the build</p><h1>{labels[locale].title}</h1><p>{labels[locale].intro}</p></section><h2>{labels[locale].projects}</h2><div class="projects">{projects.map(p => <a href={`/${locale}/${p}/`}>{p}</a>)}</div><h2>{labels[locale].articles}</h2><div class="entries">{posts.map(post => <a class="entry" href={pathFor(post)}><div class="meta">{post.data.project} · <time datetime={post.data.date.toISOString()}>{post.data.date.toISOString().slice(0,10)}</time></div><h2>{post.data.title}</h2><p>{post.data.description}</p></a>)}</div></main></Base>
