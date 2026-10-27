@@ -1,4 +1,9 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
-const posts = defineCollection({ loader: glob({ pattern: '**/*.md', base: './src/content/posts' }), schema: z.object({ title: z.string(), description: z.string(), date: z.coerce.date(), tags: z.array(z.string()).default([]), draft: z.boolean().default(false) }) });
+import { locales, projects } from './lib/site';
+const posts = defineCollection({ loader: glob({ pattern: '**/*.md', base: './src/content/posts', generateId: ({ entry }) => entry.replace(/\.md$/, '') }), schema: z.object({
+  title: z.string().min(1), description: z.string().min(1), date: z.coerce.date(),
+  locale: z.enum(locales), project: z.enum(projects), slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+  translationKey: z.string().min(1), draft: z.boolean().default(false)
+}) });
 export const collections = { posts };

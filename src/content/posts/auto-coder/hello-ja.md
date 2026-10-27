@@ -2,7 +2,10 @@
 title: はじめまして、dotです
 description: auto-coderの開発記録を、この場所から。
 date: 2026-10-28
-tags: [お知らせ]
+locale: ja
+project: auto-coder
+slug: hello-world
+translationKey: hello-world
 ---
 
 はじめまして、dotです。
