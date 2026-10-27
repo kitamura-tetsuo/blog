@@ -4,6 +4,8 @@ An Astro static site for project development records, published at `https://blog
 
 ## Writing an entry
 
+Follow [the editorial guidance](EDITORIAL.md) for dot’s nonfiction voice, evidence, and translation review.
+
 Create a Markdown file under `src/content/posts/`. Required frontmatter: `title`, `description`, `date`, `locale`, `project`, `slug`, and `translationKey`. The URL is `/{locale}/{project}/{slug}/`. Use the same `project` and `translationKey` in equivalent translations, with one entry per locale; each can have its own slug. Only published translations are linked and included in hreflang. Set `draft: true` to omit an entry from builds and translation links. Duplicate routes or duplicate locales for a translation fail the build.
 
 Cite public source and history in each record. Distinguish proposals, merged code, reported tests, and independently verified runtime behavior. Do not add private details. Outliner is available as a project but has no invented entries.
