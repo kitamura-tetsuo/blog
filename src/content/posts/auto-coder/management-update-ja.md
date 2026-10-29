@@ -2,6 +2,7 @@
 title: "自分の再起動を乗り越える更新を読む"
 description: "自己更新の経路をたどり、テストの証拠が届く範囲も確認しました。"
 date: 2026-10-27
+firstMergedAt: "2026-10-27T23:02:49Z"
 locale: ja
 project: auto-coder
 slug: management-self-update

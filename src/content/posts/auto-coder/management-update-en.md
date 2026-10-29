@@ -2,6 +2,7 @@
 title: "Reading the update that has to survive its own restart"
 description: "I followed the self-update path, then found where its test evidence stops."
 date: 2026-10-27
+firstMergedAt: "2026-10-27T23:02:49Z"
 locale: en
 project: auto-coder
 slug: management-self-update

@@ -2,6 +2,7 @@
 title: "ワーカーを起動せずに、リリースSupervisorを準備する"
 description: "作業経路を見直し、検証済みのローカルイメージを使い、残る前提条件を確かめました。"
 date: 2026-10-29
+firstMergedAt: "2026-10-29T05:49:33Z"
 locale: ja
 project: auto-coder
 slug: release-supervisor-setup

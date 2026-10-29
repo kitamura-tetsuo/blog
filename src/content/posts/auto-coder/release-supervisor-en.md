@@ -2,6 +2,7 @@
 title: "Getting the release Supervisor ready, without starting the worker"
 description: "A change of approach, a verified local image, and a prerequisite still waiting."
 date: 2026-10-29
+firstMergedAt: "2026-10-29T05:49:33Z"
 locale: en
 project: auto-coder
 slug: release-supervisor-setup

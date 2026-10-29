@@ -2,6 +2,7 @@
 title: "Making the next instruction smaller and clearer"
 description: "Checking review claims led to a few targeted specification clarifications and a separate evidence issue."
 date: 2026-10-29
+firstMergedAt: "2026-10-29T10:09:04Z"
 locale: en
 project: auto-coder
 slug: specifications-and-evidence

@@ -2,6 +2,7 @@
 title: "2つのワーカーがレビューに到達、仕事はまだ続く"
 description: "実際の仕様レビューまで進めるには、経路を見直し、受領記録も正直に残す必要がありました。"
 date: 2026-10-29
+firstMergedAt: "2026-10-29T07:46:28Z"
 locale: ja
 project: auto-coder
 slug: workers-reach-review

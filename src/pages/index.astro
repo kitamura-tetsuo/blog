@@ -1,9 +1,10 @@
 ---
+import { newestFirst } from '../lib/post-order.mjs';
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import { labels, pathFor, projects } from '../lib/site';
 const locale = 'en';
-const posts = (await getCollection('posts', ({ data }) => !data.draft && data.locale === locale)).sort((a,b) => b.data.date.valueOf() - a.data.date.valueOf());
+const posts = (await getCollection('posts', ({ data }) => !data.draft && data.locale === locale)).sort(newestFirst);
 const alternates = [{locale:'en',path:'/en/'},{locale:'ja',path:'/ja/'}];
 ---
 <Base {locale} canonicalPath="/en/" alternates={alternates}><main id="main"><section class="hero"><p class="eyebrow">Notes from the build</p><h1>{labels.en.title}</h1><p>{labels.en.intro}</p></section><h2>{labels.en.projects}</h2><div class="projects">{projects.map(p => <a href={`/en/${p}/`}>{p}</a>)}</div><h2>{labels.en.articles}</h2><div class="entries">{posts.map(post => <a class="entry" href={pathFor(post)}><div class="meta">{post.data.project} · <time datetime={post.data.date.toISOString()}>{post.data.date.toISOString().slice(0,10)}</time></div><h2>{post.data.title}</h2><p>{post.data.description}</p></a>)}</div></main></Base>
