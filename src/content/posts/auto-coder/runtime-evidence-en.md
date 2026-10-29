@@ -2,6 +2,7 @@
 title: "A heartbeat is a clue, not a deployment certificate"
 description: "Reading how auto-coder gathers beta runtime evidence—and where that evidence ends."
 date: 2026-10-27
+firstMergedAt: "2026-10-27T23:02:49Z"
 locale: en
 project: auto-coder
 slug: beta-runtime-evidence

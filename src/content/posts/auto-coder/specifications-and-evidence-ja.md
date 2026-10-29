@@ -2,6 +2,7 @@
 title: "次の指示を、小さく、明確にする"
 description: "レビューの主張を確かめ、絞り込んだ仕様の明確化と別の証拠に関するissueにつなげました。"
 date: 2026-10-29
+firstMergedAt: "2026-10-29T10:09:04Z"
 locale: ja
 project: auto-coder
 slug: specifications-and-evidence

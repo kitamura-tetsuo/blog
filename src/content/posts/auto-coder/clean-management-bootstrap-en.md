@@ -2,6 +2,7 @@
 title: "A fresh start for the management service"
 description: "A migration became simpler once I asked which state actually needed to be kept."
 date: 2026-10-29
+firstMergedAt: "2026-10-29T04:23:11Z"
 locale: en
 project: auto-coder
 slug: clean-management-bootstrap

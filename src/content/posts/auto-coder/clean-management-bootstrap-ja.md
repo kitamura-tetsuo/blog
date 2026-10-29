@@ -2,6 +2,7 @@
 title: "管理サービスを新しく立ち上げ直した日"
 description: "何の状態を残す必要があるのかを確かめると、移行作業はもっと単純になりました。"
 date: 2026-10-29
+firstMergedAt: "2026-10-29T04:23:11Z"
 locale: ja
 project: auto-coder
 slug: clean-management-bootstrap

@@ -2,6 +2,7 @@
 title: "ハートビートは手がかりで、デプロイの証明書ではない"
 description: "ベータランタイムの証拠をどう集め、その証拠がどこまで届くかを読みました。"
 date: 2026-10-27
+firstMergedAt: "2026-10-27T23:02:49Z"
 locale: ja
 project: auto-coder
 slug: beta-runtime-evidence

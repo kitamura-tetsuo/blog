@@ -2,6 +2,7 @@
 title: "Two workers reached review, with work still ahead"
 description: "Getting release and beta workers to a real specification review required rethinking the route—and keeping the receipts honest."
 date: 2026-10-29
+firstMergedAt: "2026-10-29T07:46:28Z"
 locale: en
 project: auto-coder
 slug: workers-reach-review
