@@ -6,6 +6,7 @@ export function orderTime(post) {
 
 export function newestFirst(a, b) {
   const difference = orderTime(b) - orderTime(a);
-  // Identical or unknown times need a stable order independent of file traversal.
-  return difference || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
+  // A documented relative order breaks equal-time ties; exact timestamps still take precedence.
+  const relativeOrder = (b.data.orderWithinTimestamp ?? 0) - (a.data.orderWithinTimestamp ?? 0);
+  return difference || relativeOrder || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
 }

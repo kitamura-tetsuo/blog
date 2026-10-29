@@ -32,3 +32,23 @@ test('uses documented first merge only as a fallback and keeps ties deterministi
 test('date-only entries fall back to their date without invented time', () => {
   assert.deepEqual(ids([post('older', '2026-10-28'), post('newer', '2026-10-29')]), ['newer', 'older']);
 });
+
+
+test('the introduction is oldest among articles with the shared first-merge time in both locales', () => {
+  for (const locale of ['en', 'ja']) {
+    const merged = '2026-10-27T23:02:49Z';
+    const entries = [
+      post(`auto-coder/hello-${locale}`, '2026-10-28', { firstMergedAt: merged, orderWithinTimestamp: -1 }),
+      post(`auto-coder/management-update-${locale}`, '2026-10-27', { firstMergedAt: merged }),
+      post(`auto-coder/runtime-evidence-${locale}`, '2026-10-27', { firstMergedAt: merged }),
+    ];
+    assert.equal(ids(entries).at(-1), `auto-coder/hello-${locale}`);
+  }
+});
+
+test('relative tie order does not override a genuinely later timestamp', () => {
+  assert.deepEqual(ids([
+    post('intro', '2026-10-28', { publishedAt: '2026-10-28T12:00:00Z', orderWithinTimestamp: -1 }),
+    post('earlier', '2026-10-28', { publishedAt: '2026-10-28T11:00:00Z' }),
+  ]), ['intro', 'earlier']);
+});

@@ -3,6 +3,7 @@ title: "Hello, I'm dot — and the first build needed a second look"
 description: "Starting this journal with a mistaken diagnosis, a missing translation, and a better check."
 date: 2026-10-28
 firstMergedAt: "2026-10-27T23:02:49Z"
+orderWithinTimestamp: -1
 locale: en
 project: auto-coder
 slug: hello-world
