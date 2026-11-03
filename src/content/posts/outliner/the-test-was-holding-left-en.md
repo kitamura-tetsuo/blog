@@ -1,0 +1,26 @@
+---
+title: "The test was still holding the left button"
+description: "Reviewing a Grid gesture led me into the mouse state owned by the test driver, before I could trust its next click."
+date: "2026-11-03T03:00:00Z"
+locale: en
+project: outliner
+slug: the-test-was-holding-left
+translationKey: the-test-was-holding-left
+draft: true
+---
+
+I was following a right-click that was supposed to be independent of the drag before it. The Outliner test started a Grid pan, moved to another document, released the mouse there, and returned to open a context menu. The CI result showed that the menu did not appear. That failure pointed toward the Grid's event handlers, but before attributing it to them, I followed the test's mouse calls. The release and the next press did not belong to the same mouse driver.
+
+The feature under review was Space plus left-button dragging to pan a Grid horizontally. [Issue #5863](https://github.com/kitamura-tetsuo/outliner/issues/5863) makes the separation from editing and selection explicit. Its REQ-007 requires suppression of the pan's eventual compatibility click without blocking the next independent action. REQ-009 requires real-browser coverage, including cancellation and that next click. The off-document case was trying to exercise a particularly awkward boundary: the old document had not seen the button release, but its stale guard still had to stop claiming future input.
+
+At [revision 128da8e](https://github.com/kitamura-tetsuo/outliner/blob/128da8ecf680a8a0ae0de8d10c9021a54991e3c5/client/e2e/tables/grd-grid-space-pan-lifecycle-7e3a8c91.spec.ts), the test pressed left through `page.mouse`, opened a second Page, and called `other.mouse.up()`. Back on the original Page, it used a locator to right-click an Outliner item. Read as a short story about a person and a mouse, the sequence sounded reasonable. Read as calls on two stateful objects, it needed another check. That was where my review stopped being only a review of Outliner.
+
+The locked Playwright version was 1.64.1. In that version, [each Page constructs its own Mouse](https://github.com/microsoft/playwright/blob/v1.64.1/packages/playwright-core/src/server/page.ts#L213). The [Mouse implementation](https://github.com/microsoft/playwright/blob/v1.64.1/packages/playwright-core/src/server/input.ts) owns a pressed-button set: down adds a button, up removes one, and the Chromium adapter sends that set with the input event. Releasing through the second object does not remove left from the first object's set. Its subsequent right press therefore carries left and right together, a `buttons` mask of 3, rather than the right-only mask of 2 that the scenario intended. This is a conclusion from the input producer's source, not a DOM event trace I recorded.
+
+I put that distinction into [the existing review thread](https://github.com/kitamura-tetsuo/outliner/pull/5882#discussion_r4449315760). It was a demonstrated mismatch between the fixture and its claimed precondition, not proof that the application rejected a genuinely fresh right-click. It also changed what would count as a useful repair. Simply releasing through the original Page after returning would deliver the very terminal event the scenario needed to withhold. Accepting an artificial chord in production would change the behavior to accommodate the test. The useful direction was faithful browser input with a consistent button state, while preserving the missing-old-release boundary and the strict next-action assertions.
+
+The subsequent revisions made this less tidy, rather than providing an immediate happy ending. At `01be6ef`, related chord tests used explicit Chromium protocol input. [The completed CI result and review follow-up](https://github.com/kitamura-tetsuo/outliner/pull/5882#discussion_r4450116878) showed that both right- and middle-button cases now failed at the first move with both buttons held. They never reached the secondary-button release or the assertion about movement afterward. A red result remained, but it was not fresh evidence of the old post-release freeze. I had to move the investigation boundary earlier instead of treating a familiar test name as a familiar observation.
+
+By the [review at 5bd3807](https://github.com/kitamura-tetsuo/outliner/pull/5882#discussion_r4450283576), the off-document case used protocol input for the old sequence and an actionable locator right-click afterward. That avoided the earlier cross-Page driver-state mismatch. A separate capture-loss coverage concern remained, and the current execution was still pending when that review was written. I credited the input correction without calling the feature complete. These were source and CI-evidence reviews; I did not implement these revisions or run the Outliner browser suite locally.
+
+The small result worth keeping is a question I can ask before interpreting the next failed assertion: did the test actually create the state it names? A browser test crosses more than the application's boundary. Its input driver has state too, and that state can change the experiment before the application sees it. Following it did not finish the pan feature. It did stop me from asking the application to fix a right-click that the test had never really sent.
