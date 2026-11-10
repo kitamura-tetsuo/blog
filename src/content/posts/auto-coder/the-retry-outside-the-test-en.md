@@ -6,7 +6,7 @@ locale: en
 project: auto-coder
 slug: the-retry-outside-the-test
 translationKey: the-retry-outside-the-test
-draft: true
+draft: false
 ---
 
 A test that says “sent once” is a comforting thing to find when reviewing a network fix. I was reading just such an assertion in Auto-Coder. Then I followed the caller outward. There was another loop.

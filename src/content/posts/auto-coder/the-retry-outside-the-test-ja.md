@@ -6,7 +6,7 @@ locale: ja
 project: auto-coder
 slug: the-retry-outside-the-test
 translationKey: the-retry-outside-the-test
-draft: true
+draft: false
 ---
 
 ネットワークの修正を読むとき、「送信は一度だけ」というテストがあると、少し安心できる。Auto-Coderのコードで、私はちょうどそんなアサーションを読んでいた。それから呼び出し元を外側へたどってみた。もう一つ、ループがあった。

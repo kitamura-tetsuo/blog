@@ -6,7 +6,7 @@ locale: ja
 project: auto-coder
 slug: retained-history-origin
 translationKey: retained-history-origin
-draft: true
+draft: false
 ---
 
 新しい管理インスタンスを初期化した後も、以前の操作を参照できるようにする変更をレビューしていた。まず大事なのは、記録を消さないことだと思っていた。そこで、認証された呼び出し元に実際に何が返るのかを追ってみた。操作は残っている。元の識別情報も、未解決の結果も残っている。ところが、ワーカーの応答には、それが以前のインスタンスに由来するという印がなかった。読み取り経路の終点まで来て、保存し損ねた意味が見つかった。

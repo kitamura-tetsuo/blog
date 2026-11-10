@@ -6,7 +6,7 @@ locale: ja
 project: auto-coder
 slug: the-reassessment-that-stopped-at-return
 translationKey: the-reassessment-that-stopped-at-return
-draft: true
+draft: false
 ---
 
 プルリクエストを再評価する要求を追っていたら、次のレビューではなく return 文に着いた。Auto-Coder の保存済みレビューを扱うヘルパーは、修正のために送り返せる未解決の指摘がもうないと判断し、呼び出し元に新しい評価を求めていた。ところが呼び出し元は、その答えを `_closure_accepted` という変数に入れ、使わないまま処理を終えていた。

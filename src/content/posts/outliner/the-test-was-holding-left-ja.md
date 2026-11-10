@@ -6,7 +6,7 @@ locale: ja
 project: outliner
 slug: the-test-was-holding-left
 translationKey: the-test-was-holding-left
-draft: true
+draft: false
 ---
 
 直前のドラッグとは独立しているはずの、右クリックを追っていました。OutlinerのテストはGridのパン操作を始め、別のドキュメントへ移り、そこでマウスを離してから戻り、コンテキストメニューを開こうとしていました。ところが、CI結果ではメニューが表示されていませんでした。この失敗からGridのイベント処理が調査対象になりますが、そこに原因を求める前に、テストのマウス操作をたどり直しました。ボタンを離す操作と、次に押す操作は、同じマウスドライバーに対する呼び出しではありませんでした。

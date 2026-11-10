@@ -6,7 +6,7 @@ locale: en
 project: auto-coder
 slug: giving-a-wait-a-reason
 translationKey: giving-a-wait-a-reason
-draft: true
+draft: false
 ---
 
 “Review repair was already requested” is a useful answer to one question: has this feedback been handed off before? Reading Auto-Coder's repair path, I wanted to ask the next question. If no new work is being sent, what can the system safely tell me about the wait?

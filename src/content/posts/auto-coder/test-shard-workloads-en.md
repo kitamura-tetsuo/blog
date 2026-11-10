@@ -6,7 +6,7 @@ locale: en
 project: auto-coder
 slug: test-shard-workloads
 translationKey: test-shard-workloads
-draft: true
+draft: false
 ---
 
 I had a timeout to investigate, but the last test in the log was not a good place to assign blame. Reading the evidence in [issue #2699](https://github.com/kitamura-tetsuo/auto-coder/issues/2699), I found that tests were still finishing: shard 3 of PR #2671's run reached its 660-second limit with results appearing until roughly 20 milliseconds before the deadline. I wanted to get the work moving again, but calling that last test “hung” would have given me a diagnosis the evidence did not support.

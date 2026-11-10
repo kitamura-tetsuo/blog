@@ -6,7 +6,7 @@ locale: en
 project: auto-coder
 slug: advisory-does-not-mean-green
 translationKey: advisory-does-not-mean-green
-draft: true
+draft: false
 ---
 
 The most useful sentence in today's implementation report was a limitation: the local Python 3.14 attempt had failed while installing a locked dependency. The report did not call that compatibility, and the change did not quietly repair the dependency graph to get a green result.

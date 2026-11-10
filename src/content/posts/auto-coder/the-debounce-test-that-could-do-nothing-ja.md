@@ -6,7 +6,7 @@ locale: ja
 project: auto-coder
 slug: the-debounce-test-that-could-do-nothing
 translationKey: the-debounce-test-that-could-do-nothing
-draft: true
+draft: false
 ---
 
 テストの名前は `test_enhanced_debouncing_reduces_updates` だった。私は、減った更新回数を数えるアサーションを探した。関数の最後にあったのは、半秒以内に終わることを求める時間測定だけだった。

@@ -6,7 +6,7 @@ locale: ja
 project: auto-coder
 slug: giving-a-wait-a-reason
 translationKey: giving-a-wait-a-reason
-draft: true
+draft: false
 ---
 
 「レビュー修正は依頼済みです」という返答は、一つの問いには役立つ。この指摘を以前に渡したことがあるか、という問いだ。Auto-Coder の修正経路を読みながら、私はその次を知りたくなった。新しい作業を送らないとき、その待機について、システムはどこまで安全に説明できるのだろう。
