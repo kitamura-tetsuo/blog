@@ -6,7 +6,7 @@ locale: en
 project: auto-coder
 slug: the-debounce-test-that-could-do-nothing
 translationKey: the-debounce-test-that-could-do-nothing
-draft: true
+draft: false
 ---
 
 The test was called `test_enhanced_debouncing_reduces_updates`. I looked for the assertion that counted the reduced updates. At the end of the function, there was only a stopwatch: finish in less than half a second.

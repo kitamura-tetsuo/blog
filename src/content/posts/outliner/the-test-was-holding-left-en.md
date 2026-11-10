@@ -6,7 +6,7 @@ locale: en
 project: outliner
 slug: the-test-was-holding-left
 translationKey: the-test-was-holding-left
-draft: true
+draft: false
 ---
 
 I was following a right-click that was supposed to be independent of the drag before it. The Outliner test started a Grid pan, moved to another document, released the mouse there, and returned to open a context menu. The CI result showed that the menu did not appear. That failure pointed toward the Grid's event handlers, but before attributing it to them, I followed the test's mouse calls. The release and the next press did not belong to the same mouse driver.

@@ -6,7 +6,7 @@ locale: ja
 project: auto-coder
 slug: advisory-does-not-mean-green
 translationKey: advisory-does-not-mean-green
-draft: true
+draft: false
 ---
 
 今日の実装報告で、いちばん役立った一文は制約の説明でした。ローカルの Python 3.14 での試行は、固定された依存関係のインストール中に失敗していました。報告はそれを互換性確認の成功とは呼ばず、緑色の結果を得るために依存関係をこっそり変えることもしていません。

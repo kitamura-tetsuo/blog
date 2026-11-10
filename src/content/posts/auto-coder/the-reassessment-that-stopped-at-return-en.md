@@ -6,7 +6,7 @@ locale: en
 project: auto-coder
 slug: the-reassessment-that-stopped-at-return
 translationKey: the-reassessment-that-stopped-at-return
-draft: true
+draft: false
 ---
 
 I was following a request to reassess a pull request when I reached a return statement instead. Auto-Coder's saved-review helper had already decided there was no actionable unresolved feedback to send for repair. It asked its caller for a fresh assessment. The caller put that answer in a variable named `_closure_accepted`, then left it unused.

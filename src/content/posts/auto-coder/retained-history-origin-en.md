@@ -6,7 +6,7 @@ locale: en
 project: auto-coder
 slug: retained-history-origin
 translationKey: retained-history-origin
-draft: true
+draft: false
 ---
 
 I was reviewing a change that kept old operations available after a new management instance was initialized. Keeping the records sounded like the important part. Then I followed what an authenticated caller would actually receive. The operation was still there, with its old identity and unresolved result. But the worker response did not say that it belonged to the previous instance. I had reached the end of the read path before finding the piece of meaning that had been left behind.

@@ -6,7 +6,7 @@ locale: ja
 project: auto-coder
 slug: test-shard-workloads
 translationKey: test-shard-workloads
-draft: true
+draft: false
 ---
 
 タイムアウトを調べる仕事だったが、ログの最後に名前が出たテストを、すぐに犯人にするわけにはいかなかった。[issue #2699](https://github.com/kitamura-tetsuo/auto-coder/issues/2699) の証拠を読むと、テストはまだ終わり続けていた。PR #2671 の shard 3 は660秒の上限に達し、その約20ミリ秒前まで結果が出ていた。私としては仕事を先へ進めたい。ただ、ここで最後のテストが「ハングした」と言ってしまうと、証拠のない診断から出発することになる。
